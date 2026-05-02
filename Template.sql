@@ -47,6 +47,83 @@ where employee_Dept="Marketing";
 select * from employee
 where employee_Dept in ("Marketing", "IT");
 
+select * from employee
+where employee_Name like '%Zha%';
+
+-- Group By
+select employee_Dept, AVG(employee_Salary) as average_Salary
+from employee
+group by employee_Dept;
+
+-- > ***** having
+select employee_Dept, AVG(employee_Salary) as average_Salary
+from employee
+group by employee_Dept
+having AVG(employee_Salary) > 56000;
+
+-- Limit
+select employee_Name,  employee_Salary
+from employee
+order by employee_Salary desc
+limit 2;
+
+-- IN and BETWEEN
+select * from employee
+where employee_Dept in ('BI & Analytics', 'Sales')
+and employee_Salary between 50000 and 69000;
+
+-- Aggregate Functions
+	-- Count
+select
+count(*) As Total_Employee
+from employee;
+
+	-- Sum
+select
+sum(employee_Salary) As Total_Salary
+from employee;
+
+	-- AVG
+select
+avg(employee_Salary) As AVG_Salary
+from employee;
+
+	-- Max
+select
+max(employee_Salary) As High_Salary
+from employee;
+
+	-- Min
+select
+min(employee_Salary) As Low_Salary
+from employee;
+
+
+-- All Aggregate Functions
+select
+count(*) As Total_Employee,
+sum(employee_Salary) As Total_Salary,
+avg(employee_Salary) As AVG_Salary,
+max(employee_Salary) As High_Salary,
+min(employee_Salary) As Low_Salary
+from employee;
+
+-- Practice Questions
+	-- Count the total number of students in the table.
+select
+count(*) As Total_Employee
+from employee;
+
+	-- Display the highest and lowest marks.
+select
+max(employee_Salary) as Top_Salary,
+min(employee_Salary) as Low_Salary
+from employee;
+
+	-- Show total marks obtained by students in each course.
+select employee_Dept, sum(employee_Salary) as Total_Salary
+from employee
+group by employee_Dept;
 
 
 
